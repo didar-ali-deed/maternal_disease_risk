@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="Maternal Health Risk Prediction using machine learning.">
+ <meta name="theme-color" content="#f5f8fc">
+ <title>Maternal Health | Risk Assessment</title>
+ <link rel="stylesheet" href="/static/css/style.css">
+ <script src="/static/js/app.js" defer></script>
+</head>
+
+<body>
+
+ <div class="app-shell">
+
+  <!-- Navigation -->
+  <header class="topbar">
+   <a href="/app" class="brand">
+    <div class="brand-icon">
+     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z" />
+      <path d="M12 8v8M8 12h8" />
+     </svg>
+    </div>
+
+    <div>
+     <span class="brand-name">MaternalCare</span>
+     <span class="brand-caption">Risk Assessment System</span>
+    </div>
+   </a>
+
+   <div class="system-status">
+    <span class="status-dot"></span>
+    ML Prediction System
+   </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+   <!-- Page Heading -->
+   <section class="page-heading">
+    <div class="eyebrow">PATIENT ASSESSMENT</div>
+
+    <h1>Maternal Health Risk Assessment</h1>
+
+    <p>
+     Enter patient vital signs and clinical measurements
+     to generate a machine learning risk classification.
+    </p>
+   </section>
+
+   <!-- Information Banner -->
+   <section class="info-banner">
+    <div class="info-icon">
+     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 16v-4M12 8h.01" />
+     </svg>
+    </div>
+
+    <div>
+     <strong>Before you begin</strong>
+     <p>
+      Enter accurate measurements using the units
+      specified below. All fields are required.
+     </p>
+    </div>
+   </section>
+
+   <!-- Assessment Form -->
+   <section class="assessment-card">
+
+    <div class="card-header">
+     <div>
+      <span class="section-label">PATIENT INFORMATION</span>
+      <h2>Clinical Measurements</h2>
+      <p>Provide the following six measurements.</p>
+     </div>
+
+     <span class="field-count">06 INPUTS</span>
+    </div>
+
+    <form id="predictionForm">
+
+     <!-- Demographics -->
+     <div class="form-section">
+
+      <div class="section-heading">
+       <span class="section-number">01</span>
+       <div>
+        <h3>Demographics</h3>
+        <p>Basic patient information</p>
+       </div>
+      </div>
+
+      <div class="field-grid">
+
+       <div class="field">
+        <label for="Age">
+         Patient Age
+         <span class="required">*</span>
+        </label>
+
+        <div class="input-wrapper">
+         <input type="number" id="Age" name="Age" min="1" max="119" step="1" placeholder="e.g. 28" required>
+         <span class="input-unit">Years</span>
+        </div>
+
+        <small>Age in completed years</small>
+       </div>
+
+      </div>
+     </div>
+
+     <div class="section-divider"></div>
+
+     <!-- Blood Pressure -->
+     <div class="form-section">
+
+      <div class="section-heading">
+       <span class="section-number">02</span>
+       <div>
+        <h3>Blood Pressure</h3>
+        <p>Resting blood pressure measurements</p>
+       </div>
+      </div>
+
+      <div class="field-grid">
+
+       <div class="field">
+        <label for="SystolicBP">
+         Systolic Blood Pressure
+         <span class="required">*</span>
+        </label>
+
+        <div class="input-wrapper">
+         <input type="number" id="SystolicBP" name="SystolicBP" min="31" max="299" step="1" placeholder="e.g. 120"
+          required>
+         <span class="input-unit">mmHg</span>
+        </div>
+
+        <small>Upper blood pressure reading</small>
+       </div>
+
+       <div class="field">
+        <label for="DiastolicBP">
+         Diastolic Blood Pressure
+         <span class="required">*</span>
+        </label>
+
+        <div class="input-wrapper">
+         <input type="number" id="DiastolicBP" name="DiastolicBP" min="21" max="199" step="1" placeholder="e.g. 80"
+          required>
+         <span class="input-unit">mmHg</span>
+        </div>
+
+        <small>Lower blood pressure reading</small>
+       </div>
+
+      </div>
+     </div>
+
+     <div class="section-divider"></div>
+
+     <!-- Clinical Measurements -->
+     <div class="form-section">
+
+      <div class="section-heading">
+       <span class="section-number">03</span>
+       <div>
+        <h3>Clinical Measurements</h3>
+        <p>Additional physiological indicators</p>
+       </div>
+      </div>
+
+      <div class="field-grid">
+
+       <div class="field">
+        <label for="BS">
+         Blood Sugar
+         <span class="required">*</span>
+        </label>
+
+        <div class="input-wrapper">
+         <input type="number" id="BS" name="BS" min="1.01" max="34.99" step="any" placeholder="e.g. 5.5" required>
+         <span class="input-unit">mmol/L</span>
+        </div>
+
+        <small>Glucose concentration</small>
+       </div>
+
+       <div class="field">
+        <label for="BodyTemp">
+         Body Temperature
+         <span class="required">*</span>
+        </label>
+
+        <div class="input-wrapper">
+         <input type="number" id="BodyTemp" name="BodyTemp" min="85.01" max="109.99" step="any" placeholder="e.g. 98.6"
+          required>
+         <span class="input-unit">°F</span>
+        </div>
+
+        <small>Body temperature in Fahrenheit</small>
+       </div>
+
+       <div class="field">
+        <label for="HeartRate">
+         Heart Rate
+         <span class="required">*</span>
+        </label>
+
+        <div class="input-wrapper">
+         <input type="number" id="HeartRate" name="HeartRate" min="26" max="249" step="1" placeholder="e.g. 72"
+          required>
+         <span class="input-unit">BPM</span>
+        </div>
+
+        <small>Resting heart rate</small>
+       </div>
+
+      </div>
+     </div>
+
+     <!-- Error Message -->
+     <p id="errorMessage" class="error-message" role="alert" aria-live="polite"></p>
+
+     <!-- Actions -->
+     <div class="form-actions">
+
+      <button type="button" id="resetButton" class="reset-button">
+       Reset Form
+      </button>
+
+      <button type="submit" id="submitButton" class="submit-button">
+       <span>Generate Risk Assessment</span>
+
+       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M5 12h14" />
+        <path d="m12 5 7 7-7 7" />
+       </svg>
+      </button>
+
+     </div>
+
+    </form>
+
+   </section>
+
+   <!-- Prediction Results -->
+   <section id="result" class="result-card" aria-live="polite" aria-atomic="true">
+
+    <div class="result-heading">
+     <div>
+      <span class="section-label">ASSESSMENT COMPLETE</span>
+      <h2>Prediction Results</h2>
+     </div>
+
+     <span class="result-indicator">
+      <span class="status-dot"></span>
+      Completed
+     </span>
+    </div>
+
+    <div class="risk-result">
+     <span class="result-label">Predicted Risk Category</span>
+
+     <h3 id="riskLevel">--</h3>
+
+     <p>
+      Machine learning classification result
+     </p>
+    </div>
+
+    <div class="probability-section">
+     <h3>Class Probability Distribution</h3>
+
+     <p>
+      Model-estimated probabilities for each risk category.
+     </p>
+
+     <div id="probabilities"></div>
+    </div>
+
+    <div class="result-note">
+     These probabilities represent model outputs and
+     should not be interpreted as clinical certainty.
+    </div>
+
+   </section>
+
+   <!-- Disclaimer -->
+   <section class="disclaimer-card">
+    <div class="disclaimer-icon">!</div>
+
+    <div>
+     <strong>Research and Educational Use Only</strong>
+
+     <p>
+      This application provides experimental machine
+      learning predictions. It is not a medical device,
+      diagnostic system, or substitute for professional
+      medical evaluation. Do not use its output to make
+      clinical decisions.
+     </p>
+    </div>
+   </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+   <span>MaternalCare Risk Assessment</span>
+   <span>Powered by Random Forest Classifier</span>
+  </footer>
+
+ </div>
+
+</body>
+
+</html>

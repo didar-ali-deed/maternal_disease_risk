@@ -1,11 +1,17 @@
 import logging
+from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 
 from backend.predictor import predictor
 from backend.schemas import PatientVitals, Predictions
 
 logger = logging.getLogger(__name__)
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+FRONTEND_DIR = BASE_DIR / "frontend"
 
 app = FastAPI(
     title="Maternal Health Risk Prediction API",
@@ -15,6 +21,11 @@ app = FastAPI(
         "and High Risk) based on vital signs and clinical indicators."
     ),
     version="1.0.0",
+)
+app.mount(
+    "/static",
+    StaticFiles(directory=FRONTEND_DIR),
+    name="static",
 )
 
 
@@ -48,3 +59,8 @@ def predict_risk(vitals: PatientVitals) -> Predictions:
             status_code=500,
             detail="Prediction failed. Check server logs for details.",
         ) from exc
+
+
+@app.get("/app", include_in_schema=False)
+def serve_frontend():
+    return FileResponse(FRONTEND_DIR / "index.html")
