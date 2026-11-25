@@ -1,17 +1,20 @@
 import pickle
+from functools import lru_cache
 from pathlib import Path
 
-root_path = Path(__file__).resolve().parent.parent
-model_dir = root_path / "models"
-
-model_path = model_dir / "model.pkl"
+ROOT_PATH = Path(__file__).resolve().parent.parent
+MODEL_PATH = ROOT_PATH / "models" / "model.pkl"
 
 
+@lru_cache(maxsize=1)
 def load():
-    with open(model_path, "rb") as file:
+    if not MODEL_PATH.exists():
+        raise FileNotFoundError(f"Model file not found: {MODEL_PATH}")
+
+    with MODEL_PATH.open("rb") as file:
         model_dic = pickle.load(file)
 
     model = model_dic["model"]
-    LabelEnc = model_dic["LabelEnc"]
+    label_encoder = model_dic["LabelEnc"]
 
-    return model, LabelEnc
+    return model, label_encoder
