@@ -17,8 +17,18 @@ def predictor(patient_vitals: PatientVitals) -> Predictions:
     # Generate prediction
     raw_prediction = model.predict(input_df)
 
+    pred_prob = model.predict_proba(input_df)
+
+    # Map class names to probabilities
+    probabilities = {
+        str(cls): float(round(prob, 2)) for cls, prob in zip(le.classes_, pred_prob[0])
+    }
+
     # Convert encoded prediction into original label
     risk_level = le.inverse_transform(raw_prediction)[0]
 
     # Return validated response
-    return Predictions(risk_level=str(risk_level))
+    return Predictions(
+        risk_level=str(risk_level),
+        probabilities=probabilities,
+    )

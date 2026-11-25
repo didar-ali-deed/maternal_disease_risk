@@ -37,7 +37,11 @@ def train(df: DataFrame):
     print("Shape of Testing Data:", X_test.shape)
 
     model = RandomForestClassifier(
-        n_estimators=400, n_jobs=-1, class_weight="balanced", random_state=42
+        n_estimators=600,
+        max_depth=20,
+        n_jobs=-1,
+        class_weight="balanced",
+        random_state=42,
     )
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
@@ -53,7 +57,7 @@ def train(df: DataFrame):
     }
     classification = classification_report(y_test, y_pred, target_names=enc.classes_)
 
-    model_dict = {"model": model, "le": enc}
+    model_dict = {"model": model, "LabelEnc": enc}
 
     return eval_metrics, classification, model_dict
 

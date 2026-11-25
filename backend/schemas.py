@@ -1,4 +1,4 @@
-from typing import Annotated, Literal
+from typing import Annotated
 
 from pydantic import BaseModel, Field, model_validator
 
@@ -73,12 +73,13 @@ class PatientVitals(BaseModel):
 
 
 class Predictions(BaseModel):
-    risk_level: Literal[
-        "low risk",
-        "mid risk",
-        "high risk",
-    ] = Field(
+    risk_level: str = Field(
         ...,
         description="Predicted patient risk category",
         examples=["high risk"],
+    )
+    probabilities: dict[str, float] = Field(
+        ...,
+        description="Probability score for each risk category",
+        examples=[{"high risk": 0.85, "low risk": 0.03, "mid risk": 0.12}],
     )

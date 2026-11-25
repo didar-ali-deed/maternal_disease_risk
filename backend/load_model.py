@@ -12,6 +12,6 @@ def load():
         model_dic = pickle.load(file)
 
     model = model_dic["model"]
-    le = model_dic["le"]
+    LabelEnc = model_dic["LabelEnc"]
 
-    return model, le
+    return model, LabelEnc
