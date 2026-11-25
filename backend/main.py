@@ -1,4 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
+
+from backend.predictor import predictor
+from backend.schemas import PatientVitals, Predictions
 
 app = FastAPI(
     title="🩺 Maternal Health Risk Prediction API",
@@ -22,3 +25,13 @@ def home():
             "target_classes": ["low risk", "mid risk", "high risk"],
         },
     }
+
+
+@app.post("/predict", response_model=Predictions)
+def predict_risk(vitals: PatientVitals) -> Predictions:
+    try:
+        return predictor(vitals)
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500, detail=f"Prediction failed: {exc}"
+        ) from exc

@@ -1,11 +1,12 @@
 from typing import Annotated
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 
 class PatientVitals(BaseModel):
     Age: Annotated[
-        int, Field(..., description="Patient Age", examples=[80], gt=0, lt=120)
+        int,
+        Field(..., description="Patient age in years", examples=[28], gt=0, lt=120),
     ]
     SystolicBP: Annotated[
         int,
@@ -28,7 +29,7 @@ class PatientVitals(BaseModel):
         ),
     ]
     BS: Annotated[
-        int,
+        float,
         Field(
             ...,
             description="Blood glucose concentration in mmol/L",
@@ -58,6 +59,36 @@ class PatientVitals(BaseModel):
         ),
     ]
 
+    @model_validator(mode="after")
+    def validate_bp_order(self) -> "PatientVitals":
+        if self.SystolicBP <= self.DiastolicBP:
+            raise ValueError("SystolicBP must be greater than DiastolicBP")
+        return self
+
 
 class Predictions(BaseModel):
-    prediction: str
+    risk_level: str = Field(
+        ..., description="Predicted patient risk category", examples=["high risk"]
+    )
+    confidence: float | None = Field(
+        default=None,
+        ge=0.0,
+        le=1.0,
+        description="Probability of the predicted class",
+        examples=[0.87],
+    )
+    probabilities: dict[str, float] | None = Field(
+        default=None,
+        description="Class probability distribution across all risk levels",
+        examples=[{"low risk": 0.03, "mid risk": 0.10, "high risk": 0.87}],
+    )
+    risk_code: int | None = Field(
+        default=None,
+        description="Encoded integer class label if applicable",
+        examples=[2],
+    )
+    model_version: str | None = Field(
+        default=None,
+        description="Identifier or version of the model artifact used",
+        examples=["v1.0.0"],
+    )
