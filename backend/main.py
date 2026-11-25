@@ -48,7 +48,7 @@ def home():
 
 @app.post("/predict", response_model=Predictions)
 def predict_risk(vitals: PatientVitals) -> Predictions:
-
+    
     try:
         return predictor(vitals)
 

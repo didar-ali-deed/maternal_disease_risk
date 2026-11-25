@@ -1,6 +1,123 @@
 {
-    "Accuracy": 0.812807881773399,
-    "F1_Score": 0.8132095051303976,
-    "Precision": 0.8229096539150467,
-    "Recall": 0.812807881773399
+    "dataset": {
+        "total_samples": 1014,
+        "training_samples": 811,
+        "testing_samples": 203,
+        "features": [
+            "Age",
+            "SystolicBP",
+            "DiastolicBP",
+            "BS",
+            "BodyTemp",
+            "HeartRate"
+        ],
+        "classes": [
+            "high risk",
+            "low risk",
+            "mid risk"
+        ]
+    },
+    "cross_validation": {
+        "folds": 5,
+        "scoring": {
+            "accuracy": {
+                "mean": 0.822441869272135,
+                "std": 0.029572238283478023
+            },
+            "precision_macro": {
+                "mean": 0.8336163325331907,
+                "std": 0.029561911768383763
+            },
+            "recall_macro": {
+                "mean": 0.8271224453746028,
+                "std": 0.02963782985646815
+            },
+            "f1_macro": {
+                "mean": 0.8265029515866521,
+                "std": 0.028475707361220626
+            }
+        }
+    },
+    "holdout_test": {
+        "Accuracy": 0.8620689655172413,
+        "Precision_Weighted": 0.8722072931214291,
+        "Recall_Weighted": 0.8620689655172413,
+        "F1_Weighted": 0.863497540922756,
+        "F1_Macro": 0.8700099125514874,
+        "Recall_Macro": 0.8720583390566806
+    },
+    "classification_report": {
+        "high risk": {
+            "precision": 0.9629629629629629,
+            "recall": 0.9454545454545454,
+            "f1-score": 0.9541284403669725,
+            "support": 55.0
+        },
+        "low risk": {
+            "precision": 0.9142857142857143,
+            "recall": 0.7901234567901234,
+            "f1-score": 0.847682119205298,
+            "support": 81.0
+        },
+        "mid risk": {
+            "precision": 0.7468354430379747,
+            "recall": 0.8805970149253731,
+            "f1-score": 0.8082191780821918,
+            "support": 67.0
+        },
+        "accuracy": 0.8620689655172413,
+        "macro avg": {
+            "precision": 0.8746947067622172,
+            "recall": 0.8720583390566806,
+            "f1-score": 0.8700099125514874,
+            "support": 203.0
+        },
+        "weighted avg": {
+            "precision": 0.8722072931214291,
+            "recall": 0.8620689655172413,
+            "f1-score": 0.863497540922756,
+            "support": 203.0
+        }
+    },
+    "confusion_matrix": {
+        "labels": [
+            "high risk",
+            "low risk",
+            "mid risk"
+        ],
+        "counts": [
+            [
+                52,
+                0,
+                3
+            ],
+            [
+                0,
+                64,
+                17
+            ],
+            [
+                2,
+                6,
+                59
+            ]
+        ],
+        "normalized": [
+            [
+                0.9454545454545454,
+                0.0,
+                0.05454545454545454
+            ],
+            [
+                0.0,
+                0.7901234567901234,
+                0.20987654320987653
+            ],
+            [
+                0.029850746268656716,
+                0.08955223880597014,
+                0.8805970149253731
+            ]
+        ]
+    }
 }
