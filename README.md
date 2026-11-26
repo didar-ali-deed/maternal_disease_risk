@@ -90,7 +90,7 @@ The classification target contains three categories:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/maternal_disease.git
+git clone https://github.com/didar-ali-deed/maternal_disease_risk
 cd maternal_disease
 ```
 
