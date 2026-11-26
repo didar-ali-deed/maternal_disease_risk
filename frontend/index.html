@@ -5,8 +5,8 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>Maternal Health | Risk Assessment</title>
- <link rel="stylesheet" href="/static/css/style.css">
- <script src="/static/js/app.js" defer></script>
+ <link rel="stylesheet" href="/static/css/style.css?v=3">
+ <script src="/static/js/app.js?v=3" defer></script>
 </head>
 
 <body>
@@ -56,7 +56,7 @@
      <span class="field-count">06 INPUTS</span>
     </div>
 
-    <form id="predictionForm">
+    <form id="predictionForm" method="post" action="/app">
      <div class="field-grid">
       <div class="field">
        <label for="Age">Patient Age <span class="required">*</span></label>
