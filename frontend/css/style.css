@@ -1,25 +1,15 @@
-/* =========================================
-   MaternalCare - Global Styles
-========================================= */
-
 :root {
  --primary: #2563eb;
  --primary-dark: #1d4ed8;
  --primary-light: #eff6ff;
-
  --background: #f5f8fc;
- --surface: #ffffff;
-
+ --surface: #fff;
  --text-primary: #172033;
  --text-secondary: #64748b;
  --text-muted: #94a3b8;
-
  --border: #e2e8f0;
-
  --success: #16a34a;
- --warning: #d97706;
  --danger: #dc2626;
-
  --radius: 12px;
  --shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
 }
@@ -30,17 +20,11 @@
  box-sizing: border-box;
 }
 
-html {
- scroll-behavior: smooth;
-}
-
 body {
- font-family: Inter, -apple-system, BlinkMacSystemFont,
-  "Segoe UI", sans-serif;
+ font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
  background: var(--background);
  color: var(--text-primary);
  line-height: 1.5;
- -webkit-font-smoothing: antialiased;
 }
 
 button,
@@ -51,10 +35,6 @@ input {
 button {
  cursor: pointer;
 }
-
-/* =========================================
-   Application Layout
-========================================= */
 
 .app-shell {
  min-height: 100vh;
@@ -69,19 +49,13 @@ button {
  padding: 48px 0 60px;
 }
 
-/* =========================================
-   Navigation
-========================================= */
-
 .topbar {
  height: 76px;
  background: var(--surface);
  border-bottom: 1px solid var(--border);
-
  display: flex;
  align-items: center;
  justify-content: space-between;
-
  padding: 0 max(calc((100% - 850px) / 2), 20px);
 }
 
@@ -99,7 +73,6 @@ button {
  background: var(--primary-light);
  color: var(--primary);
  border-radius: 11px;
-
  display: grid;
  place-items: center;
 }
@@ -113,14 +86,12 @@ button {
  display: block;
  font-size: 16px;
  font-weight: 750;
- letter-spacing: -0.4px;
 }
 
 .brand-caption {
  display: block;
  color: var(--text-muted);
  font-size: 11px;
- margin-top: 1px;
 }
 
 .system-status {
@@ -137,13 +108,7 @@ button {
  height: 8px;
  border-radius: 50%;
  background: var(--success);
- display: inline-block;
- flex-shrink: 0;
 }
-
-/* =========================================
-   Page Heading
-========================================= */
 
 .page-heading {
  margin-bottom: 28px;
@@ -159,8 +124,6 @@ button {
 
 .page-heading h1 {
  font-size: clamp(25px, 4vw, 34px);
- line-height: 1.2;
- letter-spacing: -1.2px;
  margin: 10px 0;
 }
 
@@ -168,29 +131,20 @@ button {
  max-width: 620px;
  color: var(--text-secondary);
  font-size: 14px;
- line-height: 1.7;
 }
-
-/* =========================================
-   Information Banner
-========================================= */
 
 .info-banner {
  display: flex;
  gap: 13px;
- align-items: flex-start;
-
  background: var(--primary-light);
  border: 1px solid #dbeafe;
  border-radius: var(--radius);
-
  padding: 16px;
  margin-bottom: 22px;
 }
 
 .info-icon {
  color: var(--primary);
- flex-shrink: 0;
 }
 
 .info-icon svg {
@@ -207,14 +161,10 @@ button {
 .info-banner p {
  font-size: 12px;
  color: #475569;
- line-height: 1.6;
 }
 
-/* =========================================
-   Assessment Card
-========================================= */
-
-.assessment-card {
+.assessment-card,
+.result-card {
  background: var(--surface);
  border: 1px solid var(--border);
  border-radius: 16px;
@@ -227,18 +177,11 @@ button {
  justify-content: space-between;
  align-items: flex-start;
  margin-bottom: 30px;
- gap: 15px;
 }
 
 .card-header h2 {
  font-size: 21px;
- letter-spacing: -0.5px;
  margin: 5px 0;
-}
-
-.card-header p {
- font-size: 13px;
- color: var(--text-secondary);
 }
 
 .field-count {
@@ -248,58 +191,12 @@ button {
  border-radius: 6px;
  font-size: 10px;
  font-weight: 750;
- letter-spacing: 0.5px;
- white-space: nowrap;
-}
-
-/* =========================================
-   Form Sections
-========================================= */
-
-.form-section {
- margin-bottom: 26px;
-}
-
-.section-heading {
- display: flex;
- align-items: center;
- gap: 12px;
- margin-bottom: 22px;
-}
-
-.section-number {
- width: 34px;
- height: 34px;
- background: var(--primary-light);
- color: var(--primary);
-
- display: grid;
- place-items: center;
-
- border-radius: 9px;
- font-size: 12px;
- font-weight: 750;
-}
-
-.section-heading h3 {
- font-size: 14px;
- font-weight: 700;
-}
-
-.section-heading p {
- color: var(--text-muted);
- font-size: 11px;
- margin-top: 2px;
 }
 
 .field-grid {
  display: grid;
- grid-template-columns: repeat(2, minmax(0, 1fr));
+ grid-template-columns: repeat(2, 1fr);
  gap: 22px 20px;
-}
-
-.field {
- min-width: 0;
 }
 
 .field label {
@@ -320,32 +217,16 @@ button {
 .input-wrapper input {
  width: 100%;
  height: 46px;
-
  border: 1px solid var(--border);
  border-radius: 8px;
-
  padding: 0 85px 0 13px;
-
- color: var(--text-primary);
- background: #fff;
-
  font-size: 13px;
  outline: none;
-
- transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.input-wrapper input::placeholder {
- color: #b0bac8;
-}
-
-.input-wrapper input:hover {
- border-color: #cbd5e1;
 }
 
 .input-wrapper input:focus {
  border-color: var(--primary);
- box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+ box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .input-unit {
@@ -353,36 +234,14 @@ button {
  right: 12px;
  top: 50%;
  transform: translateY(-50%);
-
  font-size: 11px;
  color: var(--text-muted);
-
- pointer-events: none;
 }
-
-.field small {
- display: block;
- color: var(--text-muted);
- font-size: 10px;
- margin-top: 7px;
-}
-
-.section-divider {
- height: 1px;
- background: var(--border);
- margin: 27px 0;
-}
-
-/* =========================================
-   Form Actions
-========================================= */
 
 .form-actions {
  display: flex;
  justify-content: flex-end;
- align-items: center;
  gap: 12px;
-
  border-top: 1px solid var(--border);
  padding-top: 23px;
  margin-top: 30px;
@@ -393,39 +252,27 @@ button {
  min-height: 45px;
  padding: 0 18px;
  border-radius: 8px;
-
  font-size: 12px;
  font-weight: 650;
-
- transition: 0.2s ease;
 }
 
 .reset-button {
- background: white;
+ background: #fff;
  border: 1px solid var(--border);
  color: var(--text-secondary);
 }
 
-.reset-button:hover {
- background: #f8fafc;
- border-color: #cbd5e1;
-}
-
 .submit-button {
+ background: var(--primary);
+ color: #fff;
+ border: 1px solid var(--primary);
  display: inline-flex;
  align-items: center;
- justify-content: center;
- gap: 12px;
-
- background: var(--primary);
- color: white;
- border: 1px solid var(--primary);
+ gap: 8px;
 }
 
 .submit-button:hover:not(:disabled) {
  background: var(--primary-dark);
- border-color: var(--primary-dark);
- transform: translateY(-1px);
 }
 
 .submit-button:disabled {
@@ -433,19 +280,9 @@ button {
  cursor: wait;
 }
 
-.submit-button svg {
- width: 16px;
- height: 16px;
-}
-
-/* =========================================
-   Error Message
-========================================= */
-
 .error-message {
  color: var(--danger);
  font-size: 12px;
- line-height: 1.6;
  margin-top: 15px;
 }
 
@@ -453,22 +290,9 @@ button {
  display: none;
 }
 
-/* =========================================
-   Prediction Results
-========================================= */
-
 .result-card {
  display: none;
-
- background: white;
- border: 1px solid var(--border);
- border-radius: 16px;
-
- box-shadow: var(--shadow);
-
- padding: 28px;
  margin-top: 24px;
-
  animation: fadeIn 0.35s ease;
 }
 
@@ -480,45 +304,27 @@ button {
 
  to {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
  }
 }
 
 .result-heading {
  display: flex;
- align-items: center;
  justify-content: space-between;
- gap: 12px;
  margin-bottom: 25px;
-}
-
-.result-heading h2 {
- font-size: 20px;
- margin-top: 5px;
 }
 
 .result-indicator {
  display: flex;
  align-items: center;
  gap: 7px;
-
  background: #f0fdf4;
  color: #15803d;
-
  padding: 6px 10px;
  border-radius: 20px;
-
  font-size: 10px;
  font-weight: 700;
- white-space: nowrap;
 }
-
-.result-indicator .status-dot {
- width: 6px;
- height: 6px;
-}
-
-/* Risk Result */
 
 .risk-result {
  background: #f8fafc;
@@ -528,37 +334,10 @@ button {
  margin-bottom: 25px;
 }
 
-.result-label {
- display: block;
- color: var(--text-secondary);
- font-size: 12px;
- margin-bottom: 10px;
-}
-
 .risk-result h3 {
  font-size: 30px;
  font-weight: 800;
- letter-spacing: -0.7px;
  text-transform: capitalize;
-}
-
-.risk-result p {
- color: var(--text-muted);
- font-size: 11px;
- margin-top: 5px;
-}
-
-/* Probability Distribution */
-
-.probability-section h3 {
- font-size: 14px;
- margin-bottom: 5px;
-}
-
-.probability-section>p {
- font-size: 11px;
- color: var(--text-secondary);
- margin-bottom: 20px;
 }
 
 .probability {
@@ -567,26 +346,13 @@ button {
 
 .probability-label {
  display: flex;
- align-items: center;
  justify-content: space-between;
-
  font-size: 12px;
  margin-bottom: 8px;
 }
 
-.probability-label span {
- color: var(--text-secondary);
- text-transform: capitalize;
-}
-
-.probability-label strong {
- color: var(--text-primary);
- font-size: 12px;
-}
-
 .bar {
  height: 9px;
- width: 100%;
  background: #edf2f7;
  border-radius: 20px;
  overflow: hidden;
@@ -596,34 +362,24 @@ button {
  height: 100%;
  background: var(--primary);
  border-radius: 20px;
- transition: width 0.5s ease;
+ transition: width 0.5s;
 }
 
 .result-note {
  background: #f8fafc;
  border-left: 3px solid #94a3b8;
  padding: 12px 14px;
-
  margin-top: 23px;
-
  color: var(--text-secondary);
  font-size: 11px;
- line-height: 1.6;
 }
-
-/* =========================================
-   Disclaimer
-========================================= */
 
 .disclaimer-card {
  display: flex;
- align-items: flex-start;
  gap: 13px;
-
  background: #fffbeb;
  border: 1px solid #fde68a;
  border-radius: 11px;
-
  padding: 17px;
  margin-top: 24px;
 }
@@ -631,16 +387,11 @@ button {
 .disclaimer-icon {
  width: 21px;
  height: 21px;
- flex-shrink: 0;
-
  border-radius: 50%;
  background: #fef3c7;
  color: #b45309;
-
  display: grid;
  place-items: center;
-
- font-size: 12px;
  font-weight: 800;
 }
 
@@ -652,130 +403,43 @@ button {
 .disclaimer-card p {
  color: #92400e;
  font-size: 11px;
- line-height: 1.7;
  margin-top: 5px;
 }
 
-/* =========================================
-   Footer
-========================================= */
-
 .footer {
  border-top: 1px solid var(--border);
- background: white;
-
+ background: #fff;
  min-height: 65px;
  padding: 15px max(calc((100% - 850px) / 2), 20px);
-
  display: flex;
  align-items: center;
  justify-content: space-between;
- gap: 15px;
-
  color: var(--text-muted);
  font-size: 10px;
 }
 
-/* =========================================
-   Accessibility
-========================================= */
-
-button:focus-visible,
-input:focus-visible {
- outline: 2px solid var(--primary);
- outline-offset: 3px;
-}
-
-/* =========================================
-   Responsive Design
-========================================= */
-
 @media (max-width: 600px) {
-
- .topbar {
-  height: 66px;
- }
-
- .system-status {
-  font-size: 10px;
- }
-
  .main-content {
   width: min(100% - 28px, 850px);
   padding: 32px 0 40px;
  }
 
- .page-heading h1 {
-  font-size: 26px;
- }
-
- .assessment-card,
- .result-card {
-  padding: 20px;
-  border-radius: 12px;
- }
-
  .field-grid {
   grid-template-columns: 1fr;
-  gap: 18px;
- }
-
- .card-header h2 {
-  font-size: 19px;
  }
 
  .form-actions {
   flex-direction: column-reverse;
-  align-items: stretch;
  }
 
  .reset-button,
  .submit-button {
   width: 100%;
-  min-height: 46px;
  }
 
  .footer {
   flex-direction: column;
   text-align: center;
   gap: 5px;
- }
-
- .risk-result h3 {
-  font-size: 26px;
- }
-}
-
-@media (max-width: 360px) {
-
- .brand-caption {
-  font-size: 9px;
- }
-
- .system-status {
-  font-size: 9px;
-  gap: 5px;
- }
-
- .assessment-card,
- .result-card {
-  padding: 15px;
- }
-
- .field-count {
-  font-size: 9px;
-  padding: 5px 7px;
- }
-}
-
-@media (prefers-reduced-motion: reduce) {
-
- *,
- *::before,
- *::after {
-  scroll-behavior: auto !important;
-  animation-duration: 0.01ms !important;
-  animation-iteration-count: 1 !important;
-  transition-duration: 0.01ms !important;
  }
 }
